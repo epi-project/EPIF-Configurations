@@ -27,6 +27,17 @@ rm cilium-linux-amd64.tar.gz{,.sha256sum}
 #Setup Helm repository
 helm repo add cilium https://helm.cilium.io/
     #helm uninstall cilium -n kube-system #To uninstall cilium
+    
+#*******************************************************************************************************************************************************
+
+#*********************************************************Add cluster contexts**********************************************************
+
+# Edit $HOME/.kube/config to add both clusters information as in the example config file
+sudo kubectl config --kubeconfig=config set-context cluster1-cntx --cluster=cluster1 --user=cluster1-admin
+#To switch cluster context
+kubectl config --kubeconfig=config use-context cluster1-cntx
+sudo kubectl config get-contexts
+export KUBECONFIG=~/.kube/config
 
 #Make sure there are no spaces after "\" on each line!
 #This topped working
