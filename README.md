@@ -8,6 +8,12 @@ This describes the automatic and adaptive framework configurations to place, ass
 - Firewall rules allow traffic across pods
 
 ## After cluster setups:
+You can deploy dynamically BF services across clusters by specifying the context of the command you are running.
+```shell 
+sudo kubectl apply -f BF-service.yaml --context $CLUSTER2
+sudo kubectl get pods --context $CLUSTER1
+sudo kubectl top pods --context $CLUSTER1
+```
 You can now choose to deploy the proxy service on any cluster and you can reconfigure the proxy to assign BF services to requests and chain services as follows:
 
 ```shell
