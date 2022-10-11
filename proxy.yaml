@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: proxy
+  name: proxy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: proxy
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: proxy
+    spec:
+      containers:
+        - image: jamilakassem/proxy-chaining_cli
+          name: proxy
+          command: ["./socksx"]
+          args: ["-c", "socks6://145.100.135.56:30022"]
+          ports:
+            - containerPort: 1080
+          resources:
+            limits:
+              cpu: 600m
+            requests:
+              cpu: 500m
+      restartPolicy: Always
+status: {}
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: proxy
+  name: proxy
+spec:
+  type: NodePort
+  selector:
+    app: proxy
+  ports:
+    - port: 1080
+      targetPort: 1080
+      nodePort: 30007
+      protocol: TCP
