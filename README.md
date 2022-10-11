@@ -5,7 +5,7 @@ This describes the automatic and adaptive framework configurations to place, ass
 ![Implementation](https://github.com/epi-project/EPIF-Configurations/blob/main/Architecture.drawio.png)
 
 
-![Implementation](https://github.com/epi-project/EPIF-Configurations/blob/main/Architecture.drawio.png](https://github.com/epi-project/EPIF-Configurations/blob/main/Experiment-implementation.drawio.png)
+![Implementation](https://github.com/epi-project/EPIF-Configurations/blob/main/Experiment-implementation.drawio.png)
 
 
 ## Requirements
