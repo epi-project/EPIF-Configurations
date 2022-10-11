@@ -1,0 +1,31 @@
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority-data: <confidential-key>
+    server: https://<master-IP>:6443
+  name: cluster1
+- cluster:
+    certificate-authority-data: <confidential-key>
+    server: https://<master-IP>:6443
+  name: cluster2
+contexts:
+- context:
+    cluster: cluster1
+    user: cluster1-admin
+  name: cluster1-cntx
+- context:
+    cluster: cluster2
+    user: cluster2-admin
+  name: cluster2-cntx
+current-context: cluster2-cntx
+kind: Config
+preferences: {}
+users:
+- name: cluster1-admin
+  user:
+    client-authority-data: <confidential-key>
+    client-key-data: <confidential-key>
+- name: cluster2-admin
+  user:
+    client-authority-data: <confidential-key>
+    client-key-data: <confidential-key>
