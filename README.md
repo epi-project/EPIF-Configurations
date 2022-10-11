@@ -5,6 +5,9 @@ This describes the automatic and adaptive framework configurations to place, ass
 ![Implementation](https://github.com/epi-project/EPIF-Configurations/blob/main/Architecture.drawio.png)
 
 
+![Implementation]([https://github.com/epi-project/EPIF-Configurations/blob/main/Architecture.drawio.png](https://github.com/epi-project/EPIF-Configurations/blob/main/Experiment-implementation.drawio.png)
+
+
 ## Requirements
 - You need to have at least two functional clusters with at least 1 worker, 1 master node each
 - The clusterIP blocks should not overlap across clusters
