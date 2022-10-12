@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: mencrypt
+  name: mencrypt
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: mencrypt
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: mencrypt
+    spec:
+      containers:
+        - env:
+            - name: CHACHA20_KEY
+              value: "12345678901234567890123456789012"
+          image: jamilakassem/socks-chaining_encrypt-cli
+          command: ["./functions"]
+          args: ["chacha20", "--key", "12345678901234567890123456789012"]
+          name: mencrypt
+          resources:
+            limits:
+              cpu: 600m
+            requests:
+              cpu: 500m
+      restartPolicy: Always
+status: {}
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: mencrypt
+spec:
+  type: ClusterIP
+  selector:
+    app: mencrypt
+  ports:
+    - port: 1080
+#      targetPort: 1080
+#      nodePort: 30011
+      protocol: TCP
