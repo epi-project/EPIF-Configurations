@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: mfirewall
+  name: mfirewall
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: mfirewall
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: mfirewall
+    spec:
+      containers:
+        - image: jamilakassem/socks-chaining_firewall
+          name: mfirewall
+          resources: 
+            limits:
+              cpu: 600m
+            requests:
+              cpu: 500m
+      restartPolicy: Always
+status: {}
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: mfirewall
+spec:
+  type: ClusterIP
+  selector:
+    app: mfirewall
+  ports:
+    - port: 1080
+    #  targetPort: 1080
+    #  nodePort: 30021
+      protocol: TCP
