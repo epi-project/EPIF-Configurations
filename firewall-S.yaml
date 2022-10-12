@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: sfirewall
+  name: sfirewall
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sfirewall
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: sfirewall
+    spec:
+      containers:
+        - image: jamilakassem/socks-chaining_firewall
+          name: sfirewall
+          resources: 
+            limits:
+              cpu: 600m
+            requests:
+              cpu: 500m
+      restartPolicy: Always
+status: {}
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: sfirewall
+spec:
+  type: ClusterIP
+  selector:
+    app: sfirewall
+  ports:
+    - port: 1080
+    #  targetPort: 1080
+    #  nodePort: 30021
+      protocol: TCP
