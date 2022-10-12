@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: lfirewall
+  name: lfirewall
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: lfirewall
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: lfirewall
+    spec:
+      containers:
+        - image: jamilakassem/socks-chaining_firewall
+          name: lfirewall
+          resources: 
+            limits:
+              cpu: 600m
+            requests:
+              cpu: 500m
+      restartPolicy: Always
+status: {}
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: lfirewall
+spec:
+  type: ClusterIP
+  selector:
+    app: lfirewall
+  ports:
+    - port: 1080
+    #  targetPort: 1080
+    #  nodePort: 30021
+      protocol: TCP
