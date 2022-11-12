@@ -2,7 +2,7 @@
 This describes use is to simulate the algorithm(ML) sharing use case with 2 clusters are connected and third clusters, as shown in the following figure.
 
 
-![Implementation](https://github.com/epi-project/EPIF-Configurations/blob/main/usecaseA/download%20(1).png)
+![Implementation](https://github.com/epi-project/EPIF-Configurations/blob/main/usecaseC/download%20(3).png)
 
 
 ## CLusters' Requirements
