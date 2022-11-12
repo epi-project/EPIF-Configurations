@@ -15,9 +15,7 @@ This describes use is to simulate the streaming usecase with 3 isolated clusters
  ```shell
 sudo kubectl config get-contexts
 sudo kubectl unset contexts.cluster2-cntx
-#To switch cluster context
-```
- ```shell
+
 export KUBECONFIG=~/.kube/config
 ```
 ## Client send rate
