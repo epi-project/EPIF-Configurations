@@ -15,5 +15,18 @@ This describes use is to simulate the EHR use case with 2 clusters are connected
  ```shell
 sudo tc qdisc add dev cilium_host root netem delay 10ms
 ```
-- cluster 1 
-
+- cluster 1: has cluster 1 and cluster 2 as contexts
+ ```shell
+CLUSTER1="cluster1-cntx"
+CLUSTER2="cluster2-cntx"
+```
+# Edit $HOME/.kube/config to add both clusters information as in the config file
+ ```shell
+sudo kubectl config --kubeconfig=config set-context cluster2-cntx --cluster=cluster2 --user=cluster2-admin
+#To switch cluster context
+```
+ ```shell
+kubectl config --kubeconfig=config use-context cluster2-cntx
+sudo kubectl config get-contexts
+export KUBECONFIG=~/.kube/config
+```
