@@ -20,7 +20,7 @@ sudo tc qdisc add dev cilium_host root netem delay 10ms
 CLUSTER1="cluster1-cntx"
 CLUSTER2="cluster2-cntx"
 ```
-# Edit $HOME/.kube/config to add both clusters information as in the config file
+## Edit $HOME/.kube/config to add both clusters information as in the config file
  ```shell
 sudo kubectl config --kubeconfig=config set-context cluster2-cntx --cluster=cluster2 --user=cluster2-admin
 #To switch cluster context
@@ -30,3 +30,5 @@ kubectl config --kubeconfig=config use-context cluster2-cntx
 sudo kubectl config get-contexts
 export KUBECONFIG=~/.kube/config
 ```
+## Client send rate
+Copy/paste the client.py in the correct directory. The use case is a small load usecase with 80 kb/s send rate. 
