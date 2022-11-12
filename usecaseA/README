@@ -2,7 +2,7 @@
 This describes the automatic and adaptive framework configurations to place, assign, and chain BF services' instances.  This setup is running over kubernetes/Cilium network configurations.
 
 
-![Implementation](usecaseA/download (1).png)
+![Implementation](https://github.com/epi-project/EPIF-Configurations/blob/main/usecaseA/download%20(1).png)
 
 
 ## Requirements
