@@ -1,30 +1,19 @@
-# EPIF-Configurations
-This describes the automatic and adaptive framework configurations to place, assign, and chain BF services' instances.  This setup is running over kubernetes/Cilium network configurations.
+# This is the First usecase
+This describes use is to simulate the EHR use case with 2 clusters are connected and one isolated, as shown in the following figure.
 
 
 ![Implementation](https://github.com/epi-project/EPIF-Configurations/blob/main/usecaseA/download%20(1).png)
 
 
-## Requirements
-- You need to have at least two functional clusters with at least 1 worker, 1 master node each
-- The clusterIP blocks should not overlap across clusters
-- Swapoff -a
-- Firewall rules allow traffic across pods
+## CLusters' Requirements
+- cluster 1: meduim resources with 1 master node (jk-01), and two worker nodes (jk-02 jk-05)
+- cluster 2: small resources with 1 master node (jk-03), and one worker nodes (jk-04)
+- cluster 3: large resources with 1 master node (lz-03), and three worker nodes
 
-## After cluster setups:
-You can deploy dynamically BF services across clusters by specifying the context of the command you are running.
-```shell 
-sudo kubectl apply -f BF-service.yaml --context $CLUSTER2
-sudo kubectl get pods --context $CLUSTER1
-sudo kubectl top pods --context $CLUSTER1
+## CLuster 1 setup 
+- There needs to be latency of 10 ms between 1 and 2, by running the following command on master node of the cluster 1
+ ```shell
+sudo tc qdisc add dev cilium_host root netem delay 10ms
 ```
-You can now choose to deploy the proxy service on any cluster and you can reconfigure the proxy to assign BF services to requests and chain services as follows:
+- cluster 1 
 
-```shell
-sudo kubectl patch deployment proxy --namespace default --type='json' -p='[{"op": "replace", "path": "/spec/template/spec/containers/0/args", "value": ["-c", "socks6://<BF-IP:PORT"]}]'
-```
-
-## The Experiment clusters setups:
-
-
-![Implementation](https://github.com/epi-project/EPIF-Configurations/blob/main/Experiment-implementation.drawio.png)
