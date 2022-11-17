@@ -1,4 +1,4 @@
-# This is the First usecase
+# This is the second usecase
 This describes use is to simulate the streaming usecase with 3 isolated clusters, as shown in the following figure.
 
 
