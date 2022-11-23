@@ -24,7 +24,7 @@ def cli(**kwargs):
     loop.run_until_complete(main(loop, **kwargs))
 
 # We'll limit ourself to a 80KB/sec maximum send rate
-maxSendRateBytesPerSecond = (800*1024)
+maxSendRateBytesPerSecond = (100*1024)
 
 def ConvertSecondsToBytes(numSeconds):
     return numSeconds*maxSendRateBytesPerSecond
