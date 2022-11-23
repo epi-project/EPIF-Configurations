@@ -23,7 +23,7 @@ def cli(**kwargs):
     loop = asyncio.get_event_loop()
     loop.run_until_complete(main(loop, **kwargs))
 
-# We'll limit ourself to a 100KB/sec maximum send rate
+# We'll limit ourself to a 1000KB/sec maximum send rate
 maxSendRateBytesPerSecond = (1000*1024)
 
 def ConvertSecondsToBytes(numSeconds):
