@@ -31,4 +31,4 @@ sudo kubectl config get-contexts
 export KUBECONFIG=~/.kube/config
 ```
 ## Client send rate
-Copy/paste the client.py in the correct directory. The use case is a small load usecase with 80 kb/s send rate. 
+Copy/paste the client.py in the correct directory. The use case is a small load usecase with 100 kb/s send rate. 
