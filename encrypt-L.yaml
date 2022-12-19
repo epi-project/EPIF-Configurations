@@ -25,9 +25,9 @@ spec:
           name: lencrypt
           resources:
             limits:
-              cpu: 150m
+              cpu: 600m
             requests:
-              cpu: 100m
+              cpu: 500m
       restartPolicy: Always
 status: {}
 
