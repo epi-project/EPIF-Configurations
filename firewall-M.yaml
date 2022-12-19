@@ -20,9 +20,9 @@ spec:
           name: mfirewall
           resources: 
             limits:
-              cpu: 150m
+              cpu: 300m
             requests:
-              cpu: 100m
+              cpu: 200m
       restartPolicy: Always
 status: {}
 
