@@ -5,7 +5,7 @@ metadata:
     app: mencrypt
   name: mencrypt
 spec:
-  replicas: 5
+  replicas: 1
   selector:
     matchLabels:
       app: mencrypt
@@ -25,9 +25,9 @@ spec:
           name: mencrypt
           resources:
             limits:
-              cpu: 150m
+              cpu: 300m
             requests:
-              cpu: 100m
+              cpu: 200m
       restartPolicy: Always
 status: {}
 
